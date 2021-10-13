@@ -41,6 +41,8 @@ store.dispatch({
     decrementBy: 10,
 });
 
+unsubscribe();
+
 store.dispatch({
     type: "RESET",
 });
