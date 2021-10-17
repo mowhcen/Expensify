@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-    entry: "./src/playground/destructuring.js",
+    entry: "./src/main.js",
     output: {
         path: path.join(__dirname, "public"),
         filename: "bundle.js",
