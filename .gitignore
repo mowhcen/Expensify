@@ -4,3 +4,8 @@
 
 # ignore app.js
 bundle.js
+
+
+#ignore
+
+\tests
