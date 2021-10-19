@@ -6,9 +6,7 @@ import AppRouter from "./routers/AppRouter";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
-import { addExpense } from "./actions/expenses";
 import configureStore from "./store/configureStore";
-import getVisibleExpenses from "./selectors/expenses";
 
 const store = configureStore();
 
