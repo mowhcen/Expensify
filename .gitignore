@@ -3,10 +3,10 @@
 \node_modules
 
 # ignore export files
-bundle.js
-bundle.js.map
-style.css
-style.css.map
+public/bundle.js
+public/bundle.js.map
+public/style.css
+public/style.css.map
 
 #ignore
 
