@@ -1,6 +1,7 @@
 import "normalize.css/normalize.css";
 import "./styles/style.scss";
 import "react-dates/lib/css/_datepicker.css";
+import "./firebase/firebase";
 
 import AppRouter from "./routers/AppRouter";
 import { Provider } from "react-redux";

@@ -9,3 +9,7 @@ public/dist/
 #ignore
 
 \tests
+
+
+.env.test
+.env.development
