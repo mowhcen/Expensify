@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 export class EditExpensePage extends React.Component {
     onSubmit = (expense) => {
-        this.props.editExpense(expense.id, expense);
+        this.props.editExpense(this.props.expense.id, expense);
         this.props.history.push("/");
     };
     onClick = () => {
@@ -32,7 +32,7 @@ const mapStateToProps = (state, props) => ({
     ),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, props) => ({
     editExpense: (id, expense) => dispatch(editExpense(id, expense)),
     removeExpense: (id) => dispatch(removeExpense(id)),
 });
