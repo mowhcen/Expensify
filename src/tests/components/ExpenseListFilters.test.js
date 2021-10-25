@@ -35,3 +35,11 @@ test("should render ExpenseListFilter with altData correctly", () => {
     });
     expect(wrapper).toMatchSnapshot();
 });
+
+test("should handle text change", () => {
+    const value = "search";
+    wrapper.find("input").simulate("change", {
+        target: { value },
+    });
+    expect(setTextFilter).toHaveBeenLastCalledWith(value);
+});
