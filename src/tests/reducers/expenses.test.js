@@ -16,3 +16,14 @@ test("should remove expense by id", () => {
 
     expect(state).toEqual([sample_array_obj[0], sample_array_obj[2]]);
 });
+
+test("should not remove expenses if id not found ", () => {
+    const action = {
+        type: "REMOVE_EXPENSE",
+        id: "234",
+    };
+
+    const state = expensesReducer(sample_array_obj, action);
+
+    expect(state).toEqual(sample_array_obj);
+});
