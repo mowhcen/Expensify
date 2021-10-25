@@ -1,3 +1,14 @@
+import {
+    addExpense,
+    editExpense,
+    removeExpense,
+    setExpenses,
+    startAddExpense,
+    startEditExpense,
+    startRemoveExpense,
+    startSetExpenses,
+} from "../../actions/expenses";
+
 import configureMockStore from "redux-mock-store";
 import database from "../../firebase/firebase";
 import expenses from "../fixtures/expenses";
@@ -164,4 +175,27 @@ test("should add expense with default to database and store", (done) => {
             });
             done();
         });
+});
+
+test("should setup set expense action object with data", () => {
+    const action = setExpenses(expenses);
+
+    expect(action).toEqual({
+        type: "SET_EXPENSES",
+        expenses,
+    });
+});
+
+test("should fetch the expenses from firebase", (done) => {
+    const store = createMockStore(defaultAuthState);
+
+    store.dispatch(startSetExpenses()).then(() => {
+        const action = store.getActions();
+
+        expect(action[0]).toEqual({
+            type: "SET_EXPENSES",
+            expenses,
+        });
+        done();
+    });
 });
