@@ -107,3 +107,28 @@ test("should setup add expense action object with provided values", () => {
         expense: expenses[2],
     });
 });
+
+test("should add expense to database and store", (done) => {
+    const store = createMockStore(defaultAuthState);
+
+    store
+        .dispatch(startAddExpense(sample_obj))
+        .then(() => {
+            const actions = store.getActions();
+            expect(actions[0]).toEqual({
+                type: "ADD_EXPENSE",
+                expense: {
+                    id: expect.any(String),
+                    ...sample_obj,
+                },
+            });
+
+            return database
+                .ref(`users/${uid}/expenses/${actions[0].expense.id}`)
+                .once("value");
+        })
+        .then((snapshot) => {
+            expect(snapshot.val()).toEqual(sample_obj);
+            done();
+        });
+});
