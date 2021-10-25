@@ -44,3 +44,7 @@ test("should generate set text filter object with text default", () => {
         text: "",
     });
 });
+
+test("should generate action object for sort by date", () => {
+    expect(sortByDate()).toEqual({ type: "SORT_BY_DATE" });
+});
