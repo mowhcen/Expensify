@@ -45,3 +45,24 @@ test("should setup remove expense action object", () => {
     });
 });
 
+test("should remove expense from firebase", (done) => {
+    const store = createMockStore(defaultAuthState);
+
+    const id = expenses[2].id;
+
+    store
+        .dispatch(startRemoveExpense({ id }))
+        .then(() => {
+            const action = store.getActions();
+
+            expect(action[0]).toEqual({
+                type: "REMOVE_EXPENSE",
+                id,
+            });
+            return database.ref(`users/${uid}/expenses/${id}`).once("value");
+        })
+        .then((snapshot) => {
+            expect(snapshot.val()).toBeFalsy();
+            done();
+        });
+});
