@@ -13,3 +13,17 @@ test("should filter by text value", () => {
 
     expect(result).toEqual([sample_array_obj[2], sample_array_obj[1]]);
 });
+
+test("should filter by startDate", () => {
+    const filters = {
+        text: "",
+        sortBy: "date",
+        startDate: moment(0),
+        endDate: undefined,
+    };
+
+    const result = selectExpense(sample_array_obj, filters);
+
+    expect(result).toEqual([sample_array_obj[2], sample_array_obj[0]]);
+});
+
