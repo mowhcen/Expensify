@@ -11,3 +11,7 @@ test("should correctly add up a single expense", () => {
     expect(total).toEqual(expenses[0].amount);
 });
 
+test("should correctly add up a multiple expense", () => {
+    const total = getExpenseTotal(expenses);
+    expect(total).toEqual(15677);
+});
