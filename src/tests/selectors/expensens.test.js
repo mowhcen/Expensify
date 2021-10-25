@@ -27,3 +27,16 @@ test("should filter by startDate", () => {
     expect(result).toEqual([sample_array_obj[2], sample_array_obj[0]]);
 });
 
+test("should filter by end Date", () => {
+    const filters = {
+        text: "",
+        sortBy: "date",
+        startDate: undefined,
+        endDate: moment(0),
+    };
+
+    const result = selectExpense(sample_array_obj, filters);
+
+    expect(result).toEqual([sample_array_obj[0], sample_array_obj[1]]);
+});
+
