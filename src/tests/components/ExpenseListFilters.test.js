@@ -62,3 +62,17 @@ test("should sort by amount", () => {
     });
     expect(sortByAmount).toBeCalledWith();
 });
+
+test("should handle date changes", () => {
+    const startDate = moment(0).subtract(4, "days");
+    const endDate = moment(0);
+    wrapper.setProps({
+        filters: altFilters,
+    });
+    wrapper.find("DateRangePicker").prop("onDatesChange")({
+        startDate,
+        endDate,
+    });
+    expect(setStartDate).toHaveBeenLastCalledWith(startDate);
+    expect(setEndDate).toHaveBeenLastCalledWith(endDate);
+});
