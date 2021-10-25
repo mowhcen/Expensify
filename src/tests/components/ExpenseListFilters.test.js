@@ -24,3 +24,8 @@ beforeEach(() => {
         />
     );
 });
+
+test("should render ExpenseListFilter correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+});
+
