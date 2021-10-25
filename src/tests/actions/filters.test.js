@@ -25,3 +25,14 @@ test("should generate set end date action object", () => {
         endDate: moment(0),
     });
 });
+
+test("should generate set text filter object with text value", () => {
+    const text = "sample_text";
+    const action = setTextFilter(text);
+
+    expect(action).toEqual({
+        type: "SET_TEXT_FILTER",
+        text,
+    });
+});
+
