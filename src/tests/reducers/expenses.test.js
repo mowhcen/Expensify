@@ -58,3 +58,16 @@ test("should edit an expense", () => {
 
     expect(state[1].description).toBe("cigarette");
 });
+test("should not edit expense if expense not found", () => {
+    const action = {
+        type: "EDIT_EXPENSE",
+        id: "4",
+        updates: {
+            description: "cigarette",
+        },
+    };
+
+    const state = expensesReducer(sample_array_obj, action);
+
+    expect(state).toEqual(sample_array_obj);
+});
