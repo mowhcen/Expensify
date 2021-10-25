@@ -56,3 +56,20 @@ test("should filter by date", () => {
         sample_array_obj[1],
     ]);
 });
+
+test("should filter by amount", () => {
+    const filters = {
+        text: "",
+        sortBy: "amount",
+        startDate: undefined,
+        endDate: undefined,
+    };
+
+    const result = selectExpense(sample_array_obj, filters);
+
+    expect(result).toEqual([
+        sample_array_obj[1],
+        sample_array_obj[2],
+        sample_array_obj[0],
+    ]);
+});
