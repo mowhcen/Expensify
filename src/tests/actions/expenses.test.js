@@ -35,3 +35,13 @@ const sample_obj = {
     amount: 1234,
     createAt: 123456789,
 };
+
+test("should setup remove expense action object", () => {
+    const action = removeExpense({ id });
+
+    expect(action).toEqual({
+        type: "REMOVE_EXPENSE",
+        id,
+    });
+});
+
