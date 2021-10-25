@@ -76,3 +76,25 @@ test("should set up edit expense action object", () => {
         updates: sample_obj,
     });
 });
+
+test("should edit expense from firebase", (done) => {
+    const store = createMockStore(defaultAuthState);
+    const id = expenses[1].id;
+    const updates = { amount: 2154 };
+    store
+        .dispatch(startEditExpense(id, updates))
+        .then(() => {
+            const actions = store.getActions();
+
+            expect(actions[0]).toEqual({
+                type: "EDIT_EXPENSE",
+                id,
+                updates,
+            });
+            return database.ref(`users/${uid}/expenses/${id}`).once("value");
+        })
+        .then((snapshot) => {
+            expect(snapshot.val().amount).toBe(updates.amount);
+            done();
+        });
+});
