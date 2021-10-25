@@ -59,3 +59,15 @@ test("should set startDate filter", () => {
     expect(state.startDate).toBe(startDate);
 });
 
+test("should set endDate filter", () => {
+    const endDate = moment().subtract(5, "days").valueOf();
+
+    const action = {
+        type: "SET_END_DATE",
+        endDate,
+    };
+
+    const state = filterReducer(undefined, action);
+
+    expect(state.endDate).toBe(endDate);
+});
