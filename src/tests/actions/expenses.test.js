@@ -66,3 +66,13 @@ test("should remove expense from firebase", (done) => {
             done();
         });
 });
+
+test("should set up edit expense action object", () => {
+    const action = editExpense(id, sample_obj);
+
+    expect(action).toEqual({
+        type: "EDIT_EXPENSE",
+        id,
+        updates: sample_obj,
+    });
+});
