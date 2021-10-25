@@ -6,3 +6,13 @@ test("should set default state", () => {
     expect(state).toEqual([]);
 });
 
+test("should remove expense by id", () => {
+    const action = {
+        type: "REMOVE_EXPENSE",
+        id: sample_array_obj[1].id,
+    };
+
+    const state = expensesReducer(sample_array_obj, action);
+
+    expect(state).toEqual([sample_array_obj[0], sample_array_obj[2]]);
+});
