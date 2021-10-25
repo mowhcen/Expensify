@@ -132,3 +132,36 @@ test("should add expense to database and store", (done) => {
             done();
         });
 });
+
+test("should add expense with default to database and store", (done) => {
+    const store = createMockStore(defaultAuthState);
+
+    store
+        .dispatch(startAddExpense({}))
+        .then(() => {
+            const actions = store.getActions();
+            expect(actions[0]).toEqual({
+                type: "ADD_EXPENSE",
+                expense: {
+                    id: expect.any(String),
+                    description: "",
+                    note: "",
+                    amount: 0,
+                    createAt: 0,
+                },
+            });
+
+            return database
+                .ref(`users/${uid}/expenses/${actions[0].expense.id}`)
+                .once("value");
+        })
+        .then((snapshot) => {
+            expect(snapshot.val()).toEqual({
+                description: "",
+                note: "",
+                amount: 0,
+                createAt: 0,
+            });
+            done();
+        });
+});
