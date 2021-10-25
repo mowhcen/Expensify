@@ -44,3 +44,17 @@ test("should add an expense", () => {
 
     expect(state.length).toBe(4);
 });
+
+test("should edit an expense", () => {
+    const action = {
+        type: "EDIT_EXPENSE",
+        id: sample_array_obj[1].id,
+        updates: {
+            description: "cigarette",
+        },
+    };
+
+    const state = expensesReducer(sample_array_obj, action);
+
+    expect(state[1].description).toBe("cigarette");
+});
